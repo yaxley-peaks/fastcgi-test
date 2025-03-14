@@ -4,13 +4,13 @@ using VbHelpers;
 
 namespace fastcgi_service;
 
-internal class Program
+internal abstract class Program
 {
     private static string GetHttpHeaders()
     {
         return "HTTP/1.1 200 ok\nContent-Type:text/html\n\n";
     }
-    private static void Main(string[] args)
+    private static void Main()
     {
         var app = new FCGIApplication();
         app.OnRequestReceived += (sender, request) =>
