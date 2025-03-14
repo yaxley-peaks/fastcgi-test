@@ -12,11 +12,12 @@ internal abstract class Program
     }
     private static void Main()
     {
+        HtmlWriter htmlWriter = new HtmlWriter();
         var app = new FCGIApplication();
         app.OnRequestReceived += (_, request) =>
         {
             request.WriteResponseASCII(GetHttpHeaders());
-            request.WriteResponseASCII(HtmlWriter.GetHtml(request));
+            request.WriteResponseASCII(htmlWriter.GetHtml(request));
             request.Close();
         };
 
