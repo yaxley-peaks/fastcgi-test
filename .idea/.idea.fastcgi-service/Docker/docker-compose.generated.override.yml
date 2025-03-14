@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  fastcgi-service:
+    build:
+      context: "/home/yax/Documents/dtnet/fastcgi-service"
+      dockerfile: "Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/fastcgi-service.dll"
+    environment:
+      DOTNET_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "fastcgi-service:dev"
+    ports: []
+    volumes:
+    - "/home/yax/.nuget/packages:/home/app/.nuget/packages"
+    - "/home/yax/Documents/dtnet/fastcgi-service:/app:rw"
+    - "/home/yax/Documents/dtnet/fastcgi-service:/src:rw"
+    working_dir: "/app"
