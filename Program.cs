@@ -16,7 +16,7 @@ internal abstract class Program
         app.OnRequestReceived += (_, request) =>
         {
             request.WriteResponseASCII(GetHttpHeaders());
-            request.WriteResponseASCII(HtmlWriter.GetHtml());
+            request.WriteResponseASCII(HtmlWriter.GetHtml(request));
             request.Close();
         };
 
