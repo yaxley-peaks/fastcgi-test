@@ -1,0 +1,6 @@
+﻿services:
+  fastcgi-service:
+    image: fastcgi-service
+    build:
+      context: .
+      dockerfile: Dockerfile
