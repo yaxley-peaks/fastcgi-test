@@ -1,4 +1,5 @@
 
+Imports System.Text
 Imports System.Xml.Linq
 Imports FastCgi
 
@@ -26,6 +27,18 @@ Public  Class HtmlWriter
         Return RunCommand("uname -a")
     End Function
     
+    Private Function GetTime() As String
+        Dim sb = new StringBuilder()
+        With sb
+            Dim d = DateTime.Now
+            .Append(d.ToLongDateString())
+            .Append(" -- ")
+            .Append(d.ToLongTimeString())
+            .Append(" "c)
+            .Append(TimeZoneInfo.Local.ToString())
+            Return .ToString()
+        End With
+    End Function
     public  Function GetHtml(r as Request) As String
         Dim params as List(Of String) = r.Parameters.Keys.ToList()
         Dim x as XElement =
@@ -39,6 +52,8 @@ Public  Class HtmlWriter
         <h2>System Info</h2>
         <h3><pre>uname -a</pre></h3>
         <pre><%= GetUname() %></pre>
+        <h3><pre>Server time</pre></h3>
+        <pre><%= GetTime() %></pre>
         <h2>CGI Parameters</h2>
         <ul>
             <%= params.Select(Function(p) <li> <pre><%=p %>: <%= r.GetParameterASCII(p) %> </pre></li>) %>
