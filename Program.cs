@@ -13,7 +13,7 @@ internal abstract class Program
     private static void Main()
     {
         var app = new FCGIApplication();
-        app.OnRequestReceived += (sender, request) =>
+        app.OnRequestReceived += (_, request) =>
         {
             request.WriteResponseASCII(GetHttpHeaders());
             request.WriteResponseASCII(HtmlWriter.GetHtml());
