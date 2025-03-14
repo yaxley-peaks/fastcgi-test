@@ -18,11 +18,12 @@ Public  Class HtmlWriter
     Private Function RunCommand(command as String) As String
         Dim process =  new Process()
         _startInfo.Arguments = command
-        process.StartInfo = Me._startInfo
+        process.StartInfo = _startInfo
         process.Start()
         Dim result = process.StandardOutput.ReadToEnd()
         return result
     End Function
+    
     private  Function GetUname() As String
         Return RunCommand("uname -a")
     End Function

@@ -12,7 +12,7 @@ internal abstract class Program
     }
     private static void Main()
     {
-        HtmlWriter htmlWriter = new HtmlWriter();
+        HtmlWriter htmlWriter = new();
         var app = new FCGIApplication();
         app.OnRequestReceived += (_, request) =>
         {
