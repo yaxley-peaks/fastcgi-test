@@ -6,14 +6,16 @@ namespace fastcgi_service;
 
 internal class Program
 {
+    private static string GetHttpHeaders()
+    {
+        return "HTTP/1.1 200 ok\nContent-Type:text/html\n\n";
+    }
     private static void Main(string[] args)
     {
         var app = new FCGIApplication();
         app.OnRequestReceived += (sender, request) =>
         {
-            request.WriteResponseASCII("HTTP/1.1 200 OK\n");
-            request.WriteResponseASCII("Content-Type:text/html\n");
-            request.WriteResponseASCII("\n\n");
+            request.WriteResponseASCII(GetHttpHeaders());
             request.WriteResponseASCII(HtmlWriter.GetHtml());
             request.Close();
         };
