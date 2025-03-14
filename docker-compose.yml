@@ -12,5 +12,6 @@
       context: .
       dockerfile: nginx/Dockerfile
     ports:
-      - "80:80"
+      # You should proxy this behind your actual nginx server
+      - "42069:80"
     
