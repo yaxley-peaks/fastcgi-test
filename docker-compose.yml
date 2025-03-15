@@ -13,6 +13,6 @@
       dockerfile: nginx/Dockerfile
     volumes:
       - type: bind
-        source: /tmp 
-        target: /tmp
+        source: /run 
+        target: /run
     
