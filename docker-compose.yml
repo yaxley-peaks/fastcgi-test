@@ -11,8 +11,5 @@
     build:
       context: .
       dockerfile: nginx/Dockerfile
-    volumes:
-      - type: bind
-        source: /tmp
-        target: /tmp
-    
+    ports:
+      - "80:80"
