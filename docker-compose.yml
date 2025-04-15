@@ -6,6 +6,7 @@
       dockerfile: Dockerfile
     ports:
       - "19000:19000"
+    restart: unless-stopped
   fastcgi-nginx:
     image: fastcgi-nginx
     build:
